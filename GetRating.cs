@@ -10,23 +10,21 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Azure.Documents.SystemFunctions;
-using Microsoft.Azure.Documents.Client;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace Functions
 {
-    public class GetRatings
+    public class GetRating
     {
-        [FunctionName("GetRatings")]
+        [FunctionName("GetRating")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "GetRatings/{userId}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "GetRating/{ratingId}")] HttpRequest req,
                         [CosmosDB(
                             databaseName: "IceCream",
                             collectionName: "Ratings",
                             ConnectionStringSetting = "CosmosDBConnection",
-                            SqlQuery = "select * from Ratings r where r.userId = {userId}",
+                            SqlQuery = "select * from Ratings r where r.id = {ratingId}",
                             PartitionKey = "/id")]
                             IEnumerable<CreateRatingResponse> ratings, ILogger log)
         {
@@ -37,7 +35,7 @@ namespace Functions
                 return new NotFoundResult();
             }
 
-            return new OkObjectResult(ratings);
+            return new OkObjectResult(ratings.First());
         }
     }
 }
