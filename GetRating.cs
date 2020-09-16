@@ -10,8 +10,10 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Azure.Documents.SystemFunctions;
+using Microsoft.Azure.Documents.Client;
 using System.Collections.Generic;
 using System.Linq;
+
 
 namespace Functions
 {
