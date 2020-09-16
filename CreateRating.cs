@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace My.Functions
+namespace my.CreateRating
 {
     public static class CreateRating
     {
