@@ -23,7 +23,7 @@ namespace Functions
                         [CosmosDB(
                             databaseName: "IceCream",
                             collectionName: "Ratings",
-                            ConnectionStringSetting = "CosmosDBConnection",
+                            ConnectionStringSetting = "AccountEndpoint=https://hacker1.documents.azure.com:443/;AccountKey=4I1CiJvVSlKgzhGoYcBp9vjwRMW6RZu2AC2nVQwT9leddrrFS5mSBsL5yRD6piNROuNL2rfYWCl10MXDGDr5nA==;",
                             SqlQuery = "select * from Ratings r where r.id = {ratingId}",
                             PartitionKey = "/id")]
                             IEnumerable<CreateRatingResponse> ratings, ILogger log)
